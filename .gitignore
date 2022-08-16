@@ -40,6 +40,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+backend/node_modules
 
 # TypeScript v1 declaration files
 typings/
@@ -69,6 +70,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
+backend/.env
 .env
 .env.test
 
