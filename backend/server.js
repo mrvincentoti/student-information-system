@@ -40,6 +40,7 @@ require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 require('./routes/session.routes')(app);
 require('./routes/department.routes')(app);
+require('./routes/semester.routes')(app);
 // set port and listen for request
 app.listen(port, (req, res) => {
     console.log(`Server running on port ${port}`);
