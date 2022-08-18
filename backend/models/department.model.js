@@ -1,9 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
     const Department = sequelize.define("department", {
-        class_name: {
+        className: {
             type: Sequelize.STRING
         },
-        session_id: {
+        sessionId: {
             type: Sequelize.INTEGER
         }
     });

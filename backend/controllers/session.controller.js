@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 exports.add = (req, res) => {
     // save session to database
     Session.create({
-        session_name: req.body.session_name,
+        sessionName: req.body.sessionName,
         userId: req.body.userId
     })
         .then(session => {

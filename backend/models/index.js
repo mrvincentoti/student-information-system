@@ -28,7 +28,9 @@ db.role = require("./role.model.js")(sequelize, Sequelize);
 db.session = require("./session.model.js")(sequelize, Sequelize);
 db.department = require("./department.model.js")(sequelize, Sequelize);
 db.semester = require("./semester.model.js")(sequelize, Sequelize);
-
+db.course = require("./course.model.js")(sequelize, Sequelize);
+db.section = require("./section.model.js")(sequelize, Sequelize);
+// User role
 db.role.belongsToMany(db.user, {
     through: "user_roles",
     foreignKey: "roleId",
@@ -41,10 +43,23 @@ db.user.belongsToMany(db.role, {
     otherKey: "roleId"
 });
 
+// Session
 db.session.belongsTo(db.user, {});
+// Department
 db.department.belongsTo(db.user, {});
+// Session
 db.semester.belongsTo(db.session, {});
 db.semester.belongsTo(db.user, {});
+// Course
+db.course.belongsTo(db.department, {});
+db.course.belongsTo(db.session, {});
+db.course.belongsTo(db.semester, {});
+db.course.belongsTo(db.user, {});
+// Section
+db.section.belongsTo(db.department, {});
+db.section.belongsTo(db.session, {});
+db.section.belongsTo(db.user, {});
+
 
 db.ROLES = ["user", "admin", "student", "teacher", "librarian", "hod", "cordinator", "moderator"];
 module.exports = db;

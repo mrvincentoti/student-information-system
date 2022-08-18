@@ -4,8 +4,8 @@ const Op = db.Sequelize.Op;
 
 exports.add = (req, res) => {
     Department.create({
-        class_name: req.body.class_name,
-        session_id: req.body.session_id,
+        className: req.body.className,
+        sessionId: req.body.sessionId,
         userId: req.body.userId
     })
         .then(department => {
@@ -52,6 +52,7 @@ exports.department = (req, res) => {
 }
 
 exports.edit = (req, res) => {
+    console.log(req.params);
     const id = req.params.department_id;
     Department.update(req.body, {
         where: { id: id }

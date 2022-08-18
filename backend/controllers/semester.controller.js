@@ -4,10 +4,10 @@ const Op = db.Sequelize.Op;
 
 exports.add = (req, res) => {
     Semester.create({
-        semester_name: req.body.semester_name,
-        start_date: req.body.start_date,
-        end_date: req.body.end_date,
-        sessionId: req.body.session_id,
+        semesterName: req.body.semesterName,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        sessionId: req.body.sessionId,
         userId: req.body.userId
     })
         .then(semester => {

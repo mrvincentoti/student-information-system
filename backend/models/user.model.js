@@ -1,10 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define("users", {
-        first_name: {
+        firstName: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        last_name: {
+        lastName: {
             type: Sequelize.STRING,
             allowNull: false
         },
@@ -48,7 +48,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: true
         },
-        blood_type: {
+        bloodType: {
             type: Sequelize.STRING,
             allowNull: true
         },
