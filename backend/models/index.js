@@ -30,6 +30,9 @@ db.department = require("./department.model.js")(sequelize, Sequelize);
 db.semester = require("./semester.model.js")(sequelize, Sequelize);
 db.course = require("./course.model.js")(sequelize, Sequelize);
 db.section = require("./section.model.js")(sequelize, Sequelize);
+db.studentparentinfo = require("./studentparentinfo.model.js")(sequelize, Sequelize);
+db.academicinfo = require("./academicinfo.model")(sequelize, Sequelize);
+db.promotions = require("./promotion.model")(sequelize, Sequelize);
 // User role
 db.role.belongsToMany(db.user, {
     through: "user_roles",
@@ -42,6 +45,10 @@ db.user.belongsToMany(db.role, {
     foreignKey: "userId",
     otherKey: "roleId"
 });
+db.user.hasOne(db.studentparentinfo);
+db.user.hasOne(db.academicinfo);
+db.user.hasOne(db.promotions);
+
 
 // Session
 db.session.belongsTo(db.user, {});
@@ -59,6 +66,12 @@ db.course.belongsTo(db.user, {});
 db.section.belongsTo(db.department, {});
 db.section.belongsTo(db.session, {});
 db.section.belongsTo(db.user, {});
+// Student Parent Info 
+// db.studentparentinfo.belongsTo(db.user, {});
+// promotions
+db.promotions.belongsTo(db.session);
+db.promotions.belongsTo(db.department);
+db.promotions.belongsTo(db.section);
 
 
 db.ROLES = ["user", "admin", "student", "teacher", "librarian", "hod", "cordinator", "moderator"];

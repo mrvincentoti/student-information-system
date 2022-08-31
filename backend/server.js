@@ -5,8 +5,6 @@ const app = express(); // create an express app
 const port = process.env.PORT || 8080; // set the default port
 require('dotenv').config();
 
-//swagger setup
-const { swaggerUi, swaggerSpecs } = require('./config/swagger.config');
 
 
 let corOptions = {
@@ -17,11 +15,6 @@ app.use(cors(corOptions));
 app.use(bodyParser.json()) // parse the requests of content-type application/json
 app.use(bodyParser.urlencoded({ extended: true })) // parse requests of content-type - application/x-www-form-urlencoded
 
-app.use(
-    "/api-docs",
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerSpecs, { explorer: true })
-);
 
 // import database configuration
 const db = require("./models");
@@ -43,6 +36,8 @@ require('./routes/department.routes')(app);
 require('./routes/semester.routes')(app);
 require('./routes/course.routes')(app);
 require('./routes/section.routes')(app);
+require('./routes/studentparentinfo.routes')(app);
+require('./routes/student.routes')(app);
 // set port and listen for request
 app.listen(port, (req, res) => {
     console.log(`Server running on port ${port}`);

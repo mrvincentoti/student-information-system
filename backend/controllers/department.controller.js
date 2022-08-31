@@ -52,7 +52,6 @@ exports.department = (req, res) => {
 }
 
 exports.edit = (req, res) => {
-    console.log(req.params);
     const id = req.params.department_id;
     Department.update(req.body, {
         where: { id: id }
